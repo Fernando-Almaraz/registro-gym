@@ -1,0 +1,127 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+
+  <!-- CLAVE 1. viewport: sin esta línea el celular finge ser una pantalla
+       grande y todo se ve diminuto. Es lo que hace que la página sea responsive. -->
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>GymControl — Acceso</title>
+
+  <!-- CLAVE 2. Así se "instala" Bootstrap: un <link> al CSS que vive en un CDN
+       (servidor público). No descargas nada, pero necesitas internet. -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- CLAVE 3. CSS propio, solo para lo que Bootstrap no trae. -->
+  <style>
+    body {
+      background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+      min-height: 100vh;   /* 100vh = 100% del alto de la pantalla */
+    }
+    .logo-circulo {
+      width: 72px;
+      height: 72px;
+      background: #e94560;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- CLAVE 4. La cadena del grid, siempre en este orden:
+         container  >  row  >  col  >  tu contenido
+       container = caja exterior | row = fila | col = columna.
+       Cada una de las tres es un <div> con esa palabra en su class. -->
+
+  <!-- CONTAINER. Las demás clases son "utilidades": cada una hace UNA cosa.
+       Juntas centran todo en la pantalla (d-flex + align-items-center +
+       justify-content-center) y le dan alto completo (min-vh-100). -->
+  <div class="container d-flex align-items-center justify-content-center min-vh-100">
+
+    <!-- ROW. w-100 = ancho 100%. -->
+    <div class="row w-100 justify-content-center">
+
+      <!-- COL. CLAVE 5. Los números son partes de 12 y se leen "de abajo hacia
+           arriba" (mobile-first): col-12 vale desde el celular; col-sm-8 pisa
+           a ese desde 576px; col-md-5 desde 768px; col-lg-4 desde 992px. -->
+      <div class="col-12 col-sm-8 col-md-5 col-lg-4">
+
+        <!-- CARD. Es un componente de Bootstrap (NO es del grid): una tarjeta.
+             card-body es su relleno interno. -->
+        <div class="card shadow-lg border-0 rounded-4">
+          <div class="card-body p-4 p-md-5">
+
+            <div class="text-center mb-4">
+              <div class="logo-circulo rounded-circle mx-auto mb-3 d-flex align-items-center justify-content-center">
+                <!-- Icono dibujado como SVG (código). Ignora ese choro de números. -->
+                <svg xmlns="http://www.w3.org/2000/svg" width="34" height="34" fill="white" viewBox="0 0 16 16">
+                  <path d="M6 2a.5.5 0 0 1 .47.33L10 12.036l1.53-4.208A.5.5 0 0 1 12 7.5h3.5a.5.5 0 0 1 0 1h-3.15l-1.88 5.17a.5.5 0 0 1-.94 0L6 3.964 4.47 8.171A.5.5 0 0 1 4 8.5H.5a.5.5 0 0 1 0-1h3.15l1.88-5.17A.5.5 0 0 1 6 2"/>
+                </svg>
+              </div>
+              <h1 class="h4 fw-bold mb-1">GymControl</h1>
+              <p class="text-secondary small mb-0">Panel de administración</p>
+            </div>
+
+            <form>
+
+              <!-- CLAVE 6. Espaciado: mb-3 = margin (m) + bottom (b) + nivel 3.
+                   Se arma así: m o p (margin o padding) + lado (t, b, s, e, x, y)
+                   + nivel de 0 a 5. Ejemplos: mt-2, px-4, p-md-5. -->
+              <div class="mb-3">
+                <!-- El for del label y el id del input deben ser iguales:
+                     así conectan (y al tocar el texto se activa el campo). -->
+                <label for="usuario" class="form-label fw-semibold">Usuario</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6m2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0m4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4m-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10s-3.516.68-4.168 1.332c-.678.678-.83 1.418-.832 1.664z"/>
+                    </svg>
+                  </span>
+                  <input type="text" class="form-control" id="usuario" placeholder="Escribe tu usuario">
+                </div>
+              </div>
+
+              <div class="mb-3">
+                <label for="pin" class="form-label fw-semibold">PIN de acceso</label>
+                <div class="input-group">
+                  <span class="input-group-text bg-light">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M8 1a2 2 0 0 1 2 2v4H6V3a2 2 0 0 1 2-2m3 6V3a3 3 0 0 0-6 0v4a2 2 0 0 0-2 2v5a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M5 8h6a1 1 0 0 1 1 1v5a1 1 0 0 1-1 1H5a1 1 0 0 1-1-1V9a1 1 0 0 1 1-1"/>
+                    </svg>
+                  </span>
+                  <input type="password" class="form-control" id="pin" placeholder="••••">
+                </div>
+              </div>
+
+              <div class="form-check mb-4">
+                <input class="form-check-input" type="checkbox" id="recordar">
+                <label class="form-check-label small" for="recordar">Mantener sesión en esta tablet</label>
+              </div>
+
+              <!-- CLAVE 7. Un botón se arma apilando clases: btn (es un botón)
+                   + btn-primary (color) + btn-lg (tamaño) + w-100 (ancho completo).
+                   Cambia btn-primary por btn-success, btn-danger o btn-warning
+                   y cambia el color. -->
+              <button type="button" class="btn btn-primary btn-lg w-100 fw-semibold">Entrar</button>
+
+            </form>
+
+          </div><!-- /card-body -->
+        </div><!-- /card -->
+
+        <p class="text-center text-light small mt-3 mb-0 opacity-75">
+          Acceso solo para el dueño y ayudantes
+        </p>
+
+      </div><!-- /col -->
+    </div><!-- /row -->
+  </div><!-- /container -->
+
+  <!-- CLAVE 8. El JavaScript de Bootstrap va al final del body. En el login
+       todavía no se usa, pero lo dejamos porque en las siguientes pantallas
+       hace funcionar las ventanas emergentes (modales) y las alertas. -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+</body>
+</html>
